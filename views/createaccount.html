@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="/css/styles.css">
+<div class="container">
+    <nav class="side-menu">
+        <ul>
+            <li><a href="/">Homepage</a></li>
+            <li><a href="/pets">Find a Cat/Dog</a></li>
+            <li><a href="/dogcare">Dog Care</a></li>
+            <li><a href="/catcare">Cat Care</a></li>
+            <li><a href="/createaccount" class="active">Create an Account</a></li>
+            <li><a href="/giveaway">Have a Pet to Give Away?</a></li>
+            <li><a href="/logout">Log Out</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <div class="account-content">
+            <h2>Create an Account</h2>
+            <form action="/createaccount" method="POST">
+                <label>Username: </label>
+                <input type="text" id="username" name="username" placeholder="Letters (upper and lower case) and digits only." size="49" required>
+                <br><br>
+                <label>Password: </label>
+                <input type="password" id="password" name="password" 
+                placeholder="Letters and digits only. At least 4 characters (including at least one letter and one digit)." 
+                size="100" required></input>
+                <br><br>
+                <button type="submit" class="account-button">Submit</button>
+            </form>
+            <br>
+            
+            <script>
+                window.addEventListener("DOMContentLoaded", (event) => {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const message = urlParams.get("message");
+                    if (message) {
+                        alert(message);
+                    }
+                });
+            </script>            
+        </div>
+    </div>
+</div>

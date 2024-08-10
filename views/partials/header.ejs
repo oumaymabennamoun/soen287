@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head class="header">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Adopt a Pet | Pet Adoption Service</title>
+        <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+        <link rel="stylesheet" href="/css/styles.css">
+    </head>
+    <body>
+        <header>
+            <table>
+                <tr>
+                    <td>
+                        <a href="/"><img src="/images/logo.jpg" alt="Adopt a Pet Logo" width="115"></a>
+                    </td>
+                    <td>
+                        <h1>Adopt a Pet</h1>
+                    </td>
+                    <td>
+                        <div id="timestamp"></div>
+                    </td>
+                </tr>
+            </table>
+        
+            <script>
+                function getTimestamp() {
+                const date = new Date();
+                const toLocaleDate = date.toLocaleString();
+                document.getElementById("timestamp").innerHTML = toLocaleDate;
+            }
+        
+            setInterval(getTimestamp, 1000);
+            window.onload = getTimestamp;
+            </script>
+            
+        </header>
+        <main>

@@ -1,0 +1,121 @@
+<link rel="stylesheet" href="/css/styles.css">
+<div class="container">
+    <nav class="side-menu">
+        <ul>
+            <li><a href="/">Homepage</a></li>
+            <li><a href="/pets">Find a Cat/Dog</a></li>
+            <li><a href="/dogcare">Dog Care</a></li>
+            <li><a href="/catcare">Cat Care</a></li>
+            <li><a href="/createaccount">Create an Account</a></li>
+            <li><a href="/giveaway" class="active">Have a Pet to Give Away?</a></li>
+            <li><a href="/logout">Log Out</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <div id="loginForm">
+            <h2>Login</h2>
+            <form action="/login" method="POST" id="login">
+                <label for="loginUsername">Username:</label>
+                <input type="text" id="loginUsername" name="username" required><br><br>
+
+                <label for="loginPassword">Password:</label>
+                <input type="password" id="loginPassword" name="password" required><br><br>
+                <button type="submit" class="loginButton">Submit</button>
+            </form>
+        </div>
+
+        <div id="petForm" style="display: none;">
+            <h2>I would like to give away a...</h2>
+            <form action="/giveaway" method="post">
+                <label for="type">Dog or cat:</label>
+                <input type="text" id="type" name="type" required>
+
+                <label for="breed">Breed:</label>
+                <input type="text" id="breed" name="breed" required>
+
+                <label for="age">Age in years:</label>
+                <input type="number" step="0.5" start ="0" id="age" name="age" required><br><br>
+
+                Gender:
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label><br>
+
+                Does it get along with other dogs?
+                <input type="radio" id="yes1" name="dogs" value="yes">
+                <label for="yes1">Yes</label>
+                <input type="radio" id="no1" name="dogs" value="no">
+                <label for="no1">No</label><br>
+
+                Does it get along with other cats?
+                <input type="radio" id="yes2" name="cats" value="yes">
+                <label for="yes2">Yes</label>
+                <input type="radio" id="no2" name="cats" value="no">
+                <label for="no2">No</label><br>
+
+                Is it suitable for a family with small children?
+                <input type="radio" id="yes3" name="children" value="yes">
+                <label for="yes3">Yes</label>
+                <input type="radio" id="no3" name="children" value="no">
+                <label for="no3">No</label><br>
+
+                <label for="comments">Describe the pet:</label>
+                <textarea id="comments" name="comments" rows="2" cols="50"></textarea><br><br>
+
+                <label for="name">Owner name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Owner email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <br><br>
+                <button type="submit" class="petButton">Submit</button>
+                <button type="reset" class="petButton">Clear</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        fetch("/check-session")
+            .then(response => response.json())
+            .then(data => {
+                if (data.loggedIn) {
+                    document.getElementById("loginForm").style.display = "none";
+                    document.getElementById("petForm").style.display = "block";
+                } else {
+                    document.getElementById("loginForm").style.display = "block";
+                    document.getElementById("petForm").style.display = "none";
+                }
+            });
+
+        document.getElementById("login").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            console.log("FormData:", Array.from(formData.entries())); 
+
+            fetch("/login", {
+                method: "POST",
+                body: new URLSearchParams(formData) 
+            }).then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById("loginForm").style.display = "none";
+                    document.getElementById("petForm").style.display = "block";
+                } else {
+                    document.getElementById("loginMessage").innerHTML = data.message;
+                }
+            });
+        });
+
+        window.addEventListener("DOMContentLoaded", (event) => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const message = urlParams.get("message");
+        
+        if (message) {
+            alert(decodeURIComponent(message));
+        }
+    });
+    </script>
+</div>

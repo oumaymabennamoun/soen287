@@ -1,0 +1,168 @@
+<div class="container">
+    <nav class="side-menu">
+        <ul>
+            <li><a href="/">Homepage</a></li>
+            <li><a href="/pets" class="active">Find a Cat/Dog</a></li>
+            <li><a href="/dogcare">Dog Care</a></li>
+            <li><a href="/catcare">Cat Care</a></li>
+            <li><a href="/createaccount">Create an Account</a></li>
+            <li><a href="/giveaway">Have a Pet to Give Away?</a></li>
+            <li><a href="/logout">Log Out</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <div class="content">
+        <div id="matchContainer">
+            <form id="petForm">
+                <h2>I would like to adopt a...</h2>
+                <input type="radio" id="dog" name="type" value="Dog">
+                <label for="dog">Dog</label> or
+                <input type="radio" id="cat" name="type" value="Cat">
+                <label for="cat">Cat</label>
+                <br><br>
+                    
+                Preferred breed:
+                <input type="radio" id="labrador" name="breed" value="Labrador retriever">
+                <label for="labrador">Labrador retriever</label>
+                <input type="radio" id="shorthair" name="breed" value="British shorthair">
+                <label for="shorthair">British shorthair</label>
+                <input type="radio" id="siamese" name="breed" value="Siamese">
+                <label for="siamese">Siamese</label>
+                <input type="radio" id="noBreed" name="breed" value="">
+                <label for="noBreed">Doesn't matter</label>
+                <br><br>
+                    
+                Preferred age:
+                <input type="radio" id="age1" name="age" value="0 to 2 years">
+                <label for="age1">0 to 2 years</label>
+                <input type="radio" id="age2" name="age" value="3 to 6 years">
+                <label for="age2">3 to 6 years</label>
+                <input type="radio" id="age3" name="age" value="Older than 7 years">
+                <label for="age3">Older than 7 years</label>
+                <input type="radio" id="age4" name="age" value="Doesn't matter">
+                <label for="age4">Doesn't matter</label>
+                <br><br>
+                    
+                Preferred gender:
+                <input type="radio" id="female" name="gender" value="Female">
+                <label for="female">Female</label>
+                <input type="radio" id="male" name="gender" value="Male">
+                <label for="male">Male</label>
+                <input type="radio" id="neither" name="gender" value="">
+                <label for="neither">Doesn't matter</label>
+                <br><br>
+                    
+                <input type="button" value="Search" class="pet-button" onclick="matchPets()">
+                <input type="reset" value="Clear" class="pet-button" onclick="clear()">
+            </form>
+        </div>
+    
+        <div id="searchResults">
+            <table id="petsTable">
+                <tr class="pet" data-type="Cat" data-breed="Siamese" data-age="0 to 2 years" data-gender="Female">
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    <img src="/images/pet1.jpg" alt="siamese" width="170">
+                                </td>
+                                <td>
+                                    <p><b>Sapphire</b> &nbsp;
+                                        <button type="button" class="pet-button">Interested</button>
+                                    </p>
+                                    Siamese • 0.5 year old • Female • Suitable for families with small children.
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+    
+                <tr class="pet" data-type="Dog" data-breed="Labrador retriever" data-age="3 to 6 years" data-gender="Male">
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    <img src="/images/pet2.jpg" alt="labrador retriever" width="170">
+                                </td>
+                                <td>
+                                    <p><b>Leo</b> &nbsp;
+                                        <button type="button" class="pet-button">Interested</button>
+                                    </p>
+                                    Labrador retriever • 4 years old • Male • Gets along with other dogs, cats and small children.
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+    
+                <tr class="pet" data-type="Cat" data-breed="British shorthair" data-age="0 to 2 years" data-gender="Female">
+                    <td>
+                        <table>
+                            <td>
+                                <img src="/images/pet3.jpg" alt="british shorthair" width="170">
+                            </td>
+                            <td>
+                                <p><b>Silver</b> &nbsp;
+                                    <button type="button" class="pet-button">Interested</button>
+                                </p>
+                                British shorthair • 0.5 year old • Female • Gets along with other cats.
+                            </td>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+</div>
+
+<script>
+    function matchPets() {
+    const type = document.querySelector("input[name='type']:checked")?.value || "";
+    const breed = document.querySelector("input[name='breed']:checked")?.value || "Doesn't matter";
+    const age = document.querySelector("input[name='age']:checked")?.value || "Doesn't matter";
+    const gender = document.querySelector("input[name='gender']:checked")?.value || "Doesn't matter";
+    const pets = document.querySelectorAll("#petsTable .pet");
+
+    if (!type) {
+        alert("Please select a pet type before searching!");
+        return;
+    }
+
+    let isMatched = false;
+
+    pets.forEach(pet => {
+        const petType = pet.getAttribute("data-type");
+        const petBreed = pet.getAttribute("data-breed");
+        const petAge = pet.getAttribute("data-age");
+        const petGender = pet.getAttribute("data-gender");
+
+        const matchesType = type === "" || type === petType;
+        const matchesBreed = breed === "Doesn't matter" || breed === petBreed;
+        const matchesAge = age === "Doesn't matter" || age === petAge;
+        const matchesGender = gender === "Doesn't matter" || gender === petGender;
+
+        if (matchesType && matchesBreed && matchesAge && matchesGender) {
+            pet.style.display = "table-row"; 
+            isMatched = true; 
+        } else {
+            pet.style.display = "none";
+        }
+    });
+
+    if (isMatched) {
+        document.getElementById("matchContainer").style.display = "none"; 
+        document.getElementById("searchResults").style.display = "block";
+    } else {
+        alert("No matches were found. Please try different options!");
+    }
+}
+
+    function clear() {
+        document.querySelectorAll("#petsTable .pet").forEach(pet => {
+            pet.style.display = "table-row"; 
+        });
+
+        document.getElementById("matchContainer").style.display = "block";
+        document.getElementById("searchResults").style.display = "none";
+    }
+</script>

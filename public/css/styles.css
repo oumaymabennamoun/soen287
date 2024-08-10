@@ -1,0 +1,231 @@
+body {
+    background-image:url("/images/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: "Monaco", monospace;
+    overflow: scroll;
+    height: 100vh;
+}
+header {
+    background-color: #f9f5f2;
+    padding-left: 10px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2);
+}
+header td {
+    padding: 8px;
+}
+.container {
+    padding-top: 155px;
+    align-items: center;
+}
+.side-menu ul {
+    list-style-type: none;
+}
+.side-menu a {
+    text-decoration: none;
+    display: block;
+    color: #f9f5f2;
+    background-color: rgba(196, 196, 196, 0.5);
+    border: 2px solid hsla(0, 0%, 100%, 0);
+    background-clip: padding-box;
+    outline: 2px solid #f9f5f2;
+    padding: 10px;
+    margin: 10px;
+    width: 175px;
+}
+.side-menu a.active {
+    background-color: #000000;
+    color: #f9f5f2;
+}
+.side-menu a:hover {
+    background-color: rgb(0, 0, 0);
+    color: #f9f5f2;
+}
+.container {
+    display: flex;
+    text-align: center;
+}
+.content {
+    flex: 1;
+    padding: 15px;
+}
+.privacy-statement {
+    color: #f9f5f2;
+    font-size: 21px;
+    text-align: center;
+    background-color: black;
+    display: inline-block;
+    padding: 10px;
+    border: 2px solid #f9f5f2;
+}
+footer {
+    background-color:#f9f5f2;
+    padding: 15px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    box-shadow: 0 -8px 20px 0 rgba(0, 0, 0, 0.2);
+}
+footer a {
+    color: black;
+}
+.attribution {
+    color: #f9f5f2;
+    font-size: 21px;
+    text-align: center;
+    background-color: black;
+    display: inline-block;
+    padding: 10px;
+    border: 2px solid #f9f5f2;
+}
+.attribution a {
+    color: #f9f5f2;
+}
+.contact-content {
+    color: #f9f5f2;
+    font-size: 21px;
+    background-color: black;
+    padding: 20px;
+    text-align: center;
+    display: inline-block;
+    border: 2px solid #f9f5f2;
+}
+.contact-content a {
+    color: #f9f5f2;
+}
+.dogcare {
+    color: #f9f5f2;
+    font-size: 21px;
+    text-align: center;
+    display: inline-block;
+    padding: 10px;
+    border-collapse: separate;
+    border-spacing: 50px;
+}
+.catcare {
+    color: #f9f5f2;
+    font-size: 21px;
+    text-align: center;
+    display: inline-block;
+    padding: 10px;
+    border-collapse: separate;
+    border-spacing: 50px;
+}
+.dogcare td {
+    background-color: black;
+    padding: 10px;
+    border: 2px solid #f9f5f2;
+}
+.dogcare a {
+    color: #f9f5f2;
+    transition: transform 0.3s;
+    display: inline-block;
+}
+.dogcare td:hover {
+    transform: translateX(5px) translateY(-5px);
+}
+.catcare td {
+    background-color: black;
+    padding: 10px;
+    border: 2px solid #f9f5f2;
+}
+.catcare a {
+    color: #f9f5f2;
+    transition: transform 0.3s;
+    display: inline-block;
+}
+.catcare td:hover {
+    transform: translateX(5px) translateY(-5px);
+}
+.account-content {
+    color: #f9f5f2;
+    font-size: 21px;
+    background-color: black;
+    padding: 20px;
+    text-align: center;
+    display: inline-block;
+    border: 2px solid #f9f5f2;
+}
+input::placeholder {
+    font-weight: bold;
+    color: black;
+    font-family: "Monaco", monospace;
+}
+.account-button {
+    color: black;
+    background-color: #f9f5f2;
+    font-size: 19px;
+    font-family: "Monaco", monospace;
+}
+#loginForm {
+    color: #f9f5f2;
+    width: 35%;
+    font-size: 21px;
+    background-color: black;
+    padding: 20px;
+    text-align: center;
+    display: inline-block;
+    border: 2px solid #f9f5f2;
+    margin: auto;
+}
+.loginButton {
+    color: black;
+    background-color: #f9f5f2;
+    font-size: 19px;
+    font-family: "Monaco", monospace;
+}
+#petForm {
+    color: #f9f5f2;
+    font-size: 21px;
+    background-color: black;
+    padding: 20px;
+    text-align: center;
+    display: inline-block;
+    border: 2px solid #f9f5f2;
+    margin: auto;
+}
+.petButton {
+    color: black;
+    background-color: #f9f5f2;
+    font-size: 19px;
+    font-family: "Monaco", monospace;
+}
+.hidden {
+    display: none;
+}
+#searchResults {
+    display: none; 
+}
+.pet {
+    display: inline-block;
+    width: 30%;
+    margin: 1%;
+    vertical-align: top; 
+    box-sizing: border-box; 
+    text-align: left; 
+}
+.pet-button {
+    color: black;
+    background-color: #f9f5f2;
+    font-size: 19px;
+    font-family: "Monaco", monospace;
+}
+#petsTable {
+    color: #f9f5f2;
+    font-size: 21px;
+    background-color: rgba(196, 196, 196, 0.5);
+    text-align: center;
+    display: inline-block;
+    border: 2px solid #f9f5f2;
+    margin: 0 auto;
+}
+#petsTable table {
+    border-spacing: 15px;
+}
